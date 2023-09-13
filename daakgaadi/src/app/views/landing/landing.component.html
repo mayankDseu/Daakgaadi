@@ -1,0 +1,532 @@
+
+<style>
+      @media (max-width: 768px) {
+    .big-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .bikeland,
+    .truckland,
+    .courland,
+    .packland,
+    .biketrans,
+    .carland,
+    .warehouse,
+    .track {
+      width: 100%;
+      margin-bottom: 30px;
+    }
+
+    .bikeland img,
+    .truckland img,
+    .courland img,
+    .packland img,
+    .biketrans img,
+    .carland img,
+    .warehouse img,
+    .track img {
+      width: 80%;
+      max-width: 200px; /* Adjust the max-width as needed */
+      height: auto;
+    }
+
+    .text {
+      font-size: 24px;
+    }
+  }
+
+  /* Medium to larger screens */
+  @media (min-width: 769px) {
+    .big-container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      justify-items: center;
+    }
+
+    .bikeland,
+    .truckland,
+    .courland,
+    .packland,
+    .biketrans,
+    .carland,
+    .warehouse,
+    .track {
+      width: 100%;
+    }
+
+    .bikeland img,
+    .truckland img,
+    .courland img,
+    .packland img,
+    .biketrans img,
+    .carland img,
+    .warehouse img,
+    .track img {
+      width: 100%;
+      max-width: 200px; /* Adjust the max-width as needed */
+      height: auto;
+    }
+
+    .text {
+      text-align:center;
+      font-size: 32px;
+    }
+  }
+
+
+  .relative {
+      position: relative;
+    }
+    
+    .pt-16 {
+      padding-top: 4rem;
+    }
+    
+    .pb-32 {
+      padding-bottom: 8rem;
+    }
+    
+    .flex {
+      display: flex;
+    }
+    
+    .content-center {
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .items-center {
+      align-items: center;
+    }
+    
+    .justify-center {
+      justify-content: center;
+    }
+    
+    .min-h-screen-75 {
+      min-height: 75vh;
+    }
+    
+    .absolute {
+      position: absolute;
+    }
+    
+    .top-0 {
+      top: 0;
+    }
+    
+    .w-full {
+      width: 100%;
+    }
+    
+    .h-full {
+      height: 100%;
+    }
+    
+    .bg-center {
+      background-position: center;
+    }
+    
+    .bg-cover {
+      background-size: cover;
+    }
+    
+    .opacity-75 {
+      opacity: 0.75;
+    }
+    
+    .bg-black {
+      background-color: #000;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .mx-auto {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .px-4 {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+    
+    .ml-auto {
+      margin-left: auto;
+    }
+    
+    .mr-auto {
+      margin-right: auto;
+    }
+    
+    .text-center {
+      text-align: center;
+    }
+    
+    .pr-12 {
+      padding-right: 3rem;
+    }
+    
+    .text-white {
+      color: #fff;
+    }
+    
+    .font-semibold {
+      font-weight: 600;
+    }
+    
+    .text-5xl {
+      font-size: 3rem;
+    }
+    
+    /* Media queries for responsiveness */
+    @media screen and (max-width: 768px) {
+      .text-5xl {
+        font-size: 2.5rem;
+      }
+      
+      .pr-12 {
+        padding-right: 1rem;
+      }
+    }
+/* Center the text and apply responsive changes */
+.text-container {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.text {
+  font-size: 32px;
+}
+
+/* Service items container styles */
+.services-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  justify-items: center;
+  text-align: center;
+}
+
+/* Service item container styles */
+.bikeland,
+.truckland,
+.courland,
+.packland,
+.biketrans,
+.carland,
+.warehouse,
+.track {
+  margin-bottom: 30px;
+}
+
+/* Service item image styles */
+.bikeland img,
+.truckland img,
+.courland img,
+.packland img,
+.biketrans img,
+.carland img,
+.warehouse img,
+.track img {
+  width: 80%;
+  max-width: 200px;
+  height: auto;
+}
+
+/* Responsive styles for smaller screens */
+@media (max-width: 768px) {
+  .text {
+    font-size: 24px;
+  }
+}
+
+/* Responsive styles for medium to larger screens */
+@media (min-width: 769px) {
+  .text {
+    font-size: 32px;
+  }
+}
+
+/* Base styles for the container and text alignment */
+.big-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 20px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.text {
+    grid-column: 1 / -1; /* Span the full width of the container */
+}
+
+/* Styles for each service item */
+.service-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.2s; 
+}
+.service-item:hover {
+  transform: translateY(-10px); /* Moves the element 5 pixels up on hover */
+}
+
+.service-item img {
+    max-width: 100%;
+    max-height: 200px; /* Adjust the height as per your preference */
+}
+
+.service-item p {
+    margin-top: 10px; /* Add some space between the text and the image */
+}
+
+/* Adjustments for larger screens */
+@media screen and (min-width: 768px) {
+    .big-container {
+        grid-template-columns: repeat(4, minmax(200px, 1fr));
+    }
+}
+
+
+  
+</style>
+
+<app-landauth-navbar></app-landauth-navbar>
+<main>
+  <div class="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-75">
+    <div class="absolute top-0 w-full h-full bg-center bg-cover" style="background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20190221/ourmid/pngtree-delivery-banner-poster-background-image_12237.jpg');">
+      <span id="blackOverlay" class="w-full h-full absolute opacity-75 bg-black"></span>
+    </div>
+    
+    <div class="container relative mx-auto">
+      <div class="items-center flex flex-wrap">
+        <div class="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
+          <div class="pr-12">
+            <h1 class="text-white font-semibold text-5xl">
+              Delivery??  <br>
+              <h1 class="text-white font-semibold text-5xl" style="padding: 20px;">
+               Tension not DaakGaadi is here..!!</h1>
+            </h1>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-70-px" style="transform: translateZ(0)">
+      <svg class="absolute bottom-0 overflow-hidden" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" version="1.1" viewBox="0 0 2560 100" x="0" y="0">
+        <polygon class="text-blueGray-200 fill-current" points="2560 0 2560 100 0 100"></polygon>
+      </svg>
+    </div>
+  </div>
+
+  <div class="big-container" id="container1" >
+   
+        <h1 class="text">Select Services</h1>
+   
+
+    <div class="service-item">
+      
+        <a [routerLink]="['/calc']">
+           
+    <img src="..//..//..//assets/img/truck (1).png" width="100px" height="400px;" >  
+    </a>
+    <p>TRANSPORT-PTL(PART LOAD)</p>
+    </div>
+
+    <div class="service-item">
+        <a [routerLink]="['/courier']">
+                <img src="..//..//..//assets/img/box.png" width="100px" height="400px;" >
+        </a>
+        <p>PARCEL</p>
+    </div>
+    <div class="service-item">
+      <a [routerLink]="['/flip']">
+        <img src="..//..//..//assets/img/truck.png" width="100px" height="400px;" >  
+   </a>
+    <p> Truck Full Load</p>
+    </div>
+
+    <div class="service-item">
+        <a [routerLink]="['/courier']">
+            
+        <img src="..//..//..//assets/img/furniture.png" width="100px" height="400px;" >  
+
+        </a>
+    <p>PACKERS MOVERS</p>   
+    </div>
+
+    <div class="service-item">
+        <a [routerLink]="['/fliptwo']">
+        <img src="..//..//..//assets/img/Untitled design.png" width="100px" height="400px;" >  
+        </a>
+        <p> BIKE TRANSPORT </p>
+    </div>
+    <div class="service-item">
+        <a [routerLink]="['/fliptwo']">
+        <img src="..//..//..//assets/img/tow-truck_4833911.png" width="100px" height="400px;" >  
+        </a>
+        <p>CAR TRANSPORT</p>
+    </div>
+    <div class="service-item">
+        <a [routerLink]="['/flipthree']">
+        <img src="..//..//..//assets/img/storage-stacks_2821864.png" width="100px" height="400px;" >  
+        </a>
+
+        <p>WAREHOUSE STORAGE</p>
+    </div>
+    <div class="service-item">
+        <a [routerLink]="['/profile']">
+        <img src="https://img.icons8.com/?size=512&id=kJlyCVWJrclv&format=png" width="100px" height="400px;" >  
+        </a>
+       <p>TRACK YOUR ORDER</p>
+    </div>
+   
+    <br>
+    <br>
+      </div>
+  
+  
+  
+
+
+
+  <section class="pb-20 relative block bg-blueGray-800">
+    <div
+      class="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20 h-20"
+      style="transform: translateZ(0)"
+    >
+      <svg
+        class="absolute bottom-0 overflow-hidden"
+        xmlns="http://www.w3.org/2000/svg"
+        preserveAspectRatio="none"
+        version="1.1"
+        viewBox="0 0 2560 100"
+        x="0"
+        y="0"
+      >
+        <polygon
+          class="text-blueGray-800 fill-current"
+          points="2560 0 2560 100 0 100"
+        ></polygon>
+      </svg>
+    </div>
+
+    <div class="container mx-auto px-4 lg:pt-24 lg:pb-64">
+      <div class="flex flex-wrap text-center justify-center">
+        <div class="w-full lg:w-6/12 px-4">
+          <h2 class="text-4xl font-semibold text-white">Our Reach</h2>
+         
+        </div>
+      </div>
+      <div class="flex flex-wrap mt-12 justify-center">
+        <div class="w-full lg:w-3/12 px-4 text-center">
+          <div style="display: flex; justify-content: center;">
+            <img src="..//..//..//assets/img/Untitled_design__1_-removebg-preview.png">
+          </div>
+        </div>
+      </div>
+</div>      
+  </section>
+
+
+  
+  <section class="relative block py-24 lg:pt-0 bg-blueGray-800">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-wrap justify-center lg:-mt-64 -mt-48">
+        <div class="w-full lg:w-6/12 px-4">
+          <div
+            class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-200"
+          >
+            <div class="flex-auto p-5 lg:p-10">
+              <h4 class="text-2xl font-semibold">Want to work with us?</h4>
+              <p class="leading-relaxed mt-1 mb-4 text-blueGray-500">
+                Complete this form and we will get back to you in 24 hours.
+              </p>
+
+<div class="relative w-full mb-3 mt-8">
+    <label
+      class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+      htmlFor="fullname"
+      for="fullname"
+    >
+      Full Name
+    </label>
+    <input
+      type="text"
+      id="fullname"
+      class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+      placeholder="Full Name"
+      [(ngModel)]="fullname"
+      name="fullname"
+    />
+  </div>
+  
+  <div class="relative w-full mb-3">
+    <label
+      class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+      htmlFor="email"
+      for="email"
+    >
+      Email
+    </label>
+    <input
+    id="email"
+      type="email"
+      class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+      placeholder="Email"
+      [(ngModel)]="email"
+      name="email"
+    />
+  </div>
+  
+  <div class="relative w-full mb-3">
+    <label
+      class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+      htmlFor="message"
+      for="message"
+    >
+      Message
+    </label>
+    <textarea
+    id="message"
+      rows="4"
+      cols="80"
+      class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
+      placeholder="Type a message..."
+      [(ngModel)]="message"
+      name="message"
+    ></textarea>
+  </div>
+ 
+  
+              <div class="text-center mt-6">
+                <button
+                  class="bg-blueGray-800 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                  type="button"
+                  (click)="sendMessage()"
+                >
+                  Send Message
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  
+  
+</main>
+
+<app-footer></app-footer>
+
+

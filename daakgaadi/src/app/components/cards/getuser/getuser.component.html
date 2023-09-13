@@ -1,0 +1,128 @@
+<style>
+  .bg-green-500 {
+  background-color: green;
+}
+
+.bg-crimson {
+  background-color: crimson;
+}
+.green-button {
+  background-color: green;
+  /* Add other styles for the green button */
+}
+
+.red-button {
+  background-color: crimson;
+  /* Add other styles for the red button */
+}
+
+</style>
+
+<div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded" [ngClass]="color === 'light' ? 'bg-white' : 'bg-red-900 text-white'">
+  <div class="rounded-t mb-0 px-4 py-3 border-0">
+    <div class="flex flex-wrap items-center">
+      <div class="relative w-full px-4 max-w-full flex-grow flex-1">
+        <h3 class="font-semibold text-lg" [ngClass]="color === 'light' ? 'text-blueGray-700' : 'text-white'">
+          User Tables
+        </h3>
+      </div>
+    </div>
+  </div>
+  <div class="block w-full overflow-x-auto">
+    <!-- Projects table -->
+    <table class="items-center w-full bg-transparent border-collapse">
+      <thead>
+        <tr>
+          <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left" [ngClass]="color === 'light' ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100' : 'bg-red-800 text-red-300 border-red-700'">
+            customer Email
+          </th>
+          <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left" [ngClass]="color === 'light' ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100' : 'bg-red-800 text-red-300 border-red-700'">
+            Estimate id
+          </th>
+          <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left" [ngClass]="color === 'light' ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100' : 'bg-red-800 text-red-300 border-red-700'">
+            contactNo
+          </th>
+          <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left" [ngClass]="color === 'light' ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100' : 'bg-red-800 text-red-300 border-red-700'">
+            Status 
+          </th>
+          <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left" [ngClass]="color === 'light' ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100' : 'bg-red-800 text-red-300 border-red-700'">
+            Price 
+          </th>
+          <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left" [ngClass]="color === 'light' ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100' : 'bg-red-800 text-red-300 border-red-700'">
+            Goods in warehouse
+          </th>
+          <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left" [ngClass]="color === 'light' ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100' : 'bg-red-800 text-red-300 border-red-700'">
+            reached hub 
+          </th>
+          <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left" [ngClass]="color === 'light' ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100' : 'bg-red-800 text-red-300 border-red-700'">
+            out for delivery 
+          </th>
+          <!-- New Estimate Details column header -->
+          
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let estimate of paginatedEstimates">
+          <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+            {{ estimate.email }}
+          </td>
+          <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+            {{ estimate._id }}
+          </td>
+          <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+            {{ estimate.contact }}
+          </td>
+          <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+            <i
+              class="fas fa-circle mr-2"
+              [style.color]="isSelectedEstimate(estimate._id) ? 'green' : 'orange'"
+            ></i>{{ estimate.status }}
+          </td>
+          
+          
+          <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+             {{ estimate.price }}
+          </td>
+          <!-- Goods in warehouse button -->
+<!-- Goods in warehouse button -->
+<td>
+  <button class="hello-btn" data-estimate-status="Goods in warehouse" data-button-id="0"
+    [style.backgroundColor]="estimate.status.toLowerCase() === 'goods in warehouse' ? buttonColor : 'default'"
+    (click)="updateStatus(estimate._id)">
+    Goods in warehouse
+  </button>
+</td>
+
+<!-- Reached Hub button -->
+<td>
+  <button class="btn2" data-estimate-status="Reached Hub" data-button-id="1"
+    [style.backgroundColor]="estimate.status.toLowerCase() === 'reached hub' ? buttonColortwo : 'default'"
+    (click)="updateStatustwo(estimate._id)">
+    Reached Hub
+  </button>
+</td>
+
+
+<!-- Out for delivery button -->
+<td>
+  <button [style.backgroundColor]="estimate.status === ' out for delivery' ? buttonColorthree : 'default'"
+    (click)="updateStatusthree(estimate._id)">
+    Out for delivery
+  </button>
+</td>
+
+          
+          
+          
+          <!-- New Estimate Details column data -->
+         
+        </tr>
+      </tbody>
+      <!-- Pagination controls -->
+      <div class="flex justify-center mt-4">
+        <button class="bg-gray-300 px-4 py-2 rounded-l" [disabled]="currentPage === 1" (click)="onPageChange(currentPage - 1)">Prev</button>
+        <button class="bg-gray-300 px-4 py-2 rounded-r" [disabled]="currentPage === totalPages" (click)="onPageChange(currentPage + 1)">Next</button>
+      </div>
+    </table>
+  </div>
+</div>

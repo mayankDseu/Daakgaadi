@@ -1,0 +1,79 @@
+<style>
+    .send-email-container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.email-form .form-group {
+  margin-bottom: 15px;
+}
+
+.email-form label {
+  display: block;
+  font-weight: bold;
+}
+
+.email-form .form-control {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.email-form .form-control:focus {
+  outline: none;
+  border-color: #80bdff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.email-form textarea {
+  height: 150px;
+  resize: vertical;
+}
+
+.email-form button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.email-form button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+</style>
+
+
+<div class="send-email-container">
+    <h2>Send Email</h2>
+    <form (submit)="sendEmail()" #emailForm="ngForm" class="email-form">
+      <div class="form-group">
+        <label for="to">To</label>
+        <input type="email" name="to" required [(ngModel)]="email.to" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="subject">Subject</label>
+        <input type="text" name="subject" required [(ngModel)]="email.subject" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="text">Message</label>
+        <textarea name="text" required [(ngModel)]="email.text" class="form-control"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="attachment">Attachment</label>
+        <input type="file" name="attachment" (change)="onFileSelected($event)" class="form-control">
+      </div>
+      <button type="submit" [disabled]="!emailForm.form.valid" class="btn btn-primary">Send Email</button>
+    </form>
+  </div>
+  

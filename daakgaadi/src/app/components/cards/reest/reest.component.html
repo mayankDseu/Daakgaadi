@@ -1,0 +1,245 @@
+<style>
+    /* Add the following CSS styles to display the selected option text */
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 8px 20px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+  outline: none;
+}
+
+/* For Firefox, add additional styling for select dropdown arrow */
+@-moz-document url-prefix() {
+  select {
+    padding-right: 30px;
+    background: url('data:image/svg+xml;charset=utf-8,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 256 512\'%3E%3Cpath fill=\'%23000\' d=\'M128 352c53.019 0 96-42.981 96-96s-42.981-96-96-96-96 42.981-96 96 42.981 96 96 96zm-64 32c-88.366 0-160-71.634-160-160s71.634-160 160-160 160 71.634 160 160-71.634 160-160 160zm0-272C41.727 112 0 153.727 0 208s41.727 96 96 96 96-41.727 96-96-41.727-96-96-96zm0 160c-35.346 0-64-28.654-64-64s28.654-64 64-64 64 28.654 64 64-28.654 64-64 64z\'/%3E%3C/svg%3E') no-repeat right center;
+    background-size: 20px 20px;
+  }
+}
+/* Your existing styles */
+
+/* Custom modal styles */
+.modal {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+.modal-buttons {
+  margin-top: 10px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-cancel,
+.btn-update {
+  cursor: pointer;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  margin-left: 10px;
+}
+
+.btn-cancel {
+  background-color: #ccc;
+}
+
+.btn-update {
+  background-color: #007bff;
+  color: #fff;
+}
+
+
+
+
+</style>
+
+<div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded" [ngClass]="color === 'light' ? 'bg-white' : 'bg-red-900 text-white'">
+    <div class="rounded-t mb-0 px-4 py-3 border-0">
+      <div class="flex flex-wrap items-center">
+        <div class="relative w-full px-4 max-w-full flex-grow flex-1">
+          <h3 class="font-semibold text-lg" [ngClass]="color === 'light' ? 'text-blueGray-700' : 'text-white'">
+           Restimate User
+          </h3>
+        </div>
+      </div>
+    </div>
+    
+    <div class="block w-full overflow-x-auto">
+      <!-- Projects table -->
+      <div class="filter-container">
+        <label for="filterSelect">check Confirmation:</label>
+        <select id="filterSelect" [(ngModel)]="selectedFilter" (change)="onSearchChange()">
+          <option value="all">All</option>
+          <option value="true">Confirm Booking</option>
+          <option value="false">Not Confirm Booking</option>
+        </select>
+      </div>
+      
+      <table class="items-center w-full bg-transparent border-collapse">
+        <thead>
+          <tr>
+            <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left" [ngClass]="color === 'light' ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100' : 'bg-red-800 text-red-300 border-red-700'">
+              customer Email
+            </th>
+            <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left" [ngClass]="color === 'light' ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100' : 'bg-red-800 text-red-300 border-red-700'">
+              Estimate id
+            </th>
+            <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left" [ngClass]="color === 'light' ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100' : 'bg-red-800 text-red-300 border-red-700'">
+              contactNo
+            </th>
+            <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left" [ngClass]="color === 'light' ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100' : 'bg-red-800 text-red-300 border-red-700'">
+              Status 
+            </th>
+            <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left" [ngClass]="color === 'light' ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100' : 'bg-red-800 text-red-300 border-red-700'">
+              Length
+            </th>
+            <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left" [ngClass]="color === 'light' ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100' : 'bg-red-800 text-red-300 border-red-700'">
+             Breadth
+            </th>
+            <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left" [ngClass]="color === 'light' ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100' : 'bg-red-800 text-red-300 border-red-700'">
+              Height 
+            </th>
+            <!-- New Estimate Details column header -->
+            <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left" [ngClass]="color === 'light' ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100' : 'bg-red-800 text-red-300 border-red-700'">
+             Actual Weight
+            </th>
+            <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left" [ngClass]="color === 'light' ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100' : 'bg-red-800 text-red-300 border-red-700'">
+               Estimated Result
+               </th>
+               <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left" [ngClass]="color === 'light' ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100' : 'bg-red-800 text-red-300 border-red-700'">
+               Is confrim
+                </th>
+                <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left" [ngClass]="color === 'light' ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100' : 'bg-red-800 text-red-300 border-red-700'">
+                    Update
+                  </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let estimate of paginatedEstimates">
+            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+              {{ estimate.email }}
+            </td>
+            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+              {{ estimate._id }}
+            </td>
+            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+              {{ estimate.contact }}
+            </td>
+            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+              {{ estimate.status }}
+            </td>
+            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+              {{ estimate.length }}
+            </td>
+            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+              {{ estimate.breadth }}
+            </td>
+            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+              {{ estimate.height }}
+            </td>
+            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+              {{ estimate.actualweight }}
+            </td>
+            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+              {{ estimate.estimateResult }}
+            </td>
+            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+              {{ estimate.isconfirm }}
+            </td>
+            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+              <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" (click)="openUpdateForm(estimate)">
+                Update
+              </button>
+            </td>
+            <!-- New Estimate Details column data -->
+       
+          
+            <!-- New Estimate Details column data -->
+           
+          </tr>
+        </tbody>
+        <!-- Rest of the HTML template -->
+
+  
+        <!-- Pagination controls -->
+        <div class="flex justify-center mt-4">
+          <button class="bg-gray-300 px-4 py-2 rounded-l" [disabled]="currentPage === 1" (click)="onPageChange(currentPage - 1)">Prev</button>
+          <button class="bg-gray-300 px-4 py-2 rounded-r" [disabled]="currentPage === totalPages" (click)="onPageChange(currentPage + 1)">Next</button>
+        </div>
+      </table>
+      
+    </div>
+  </div>
+  
+ 
+<!-- Update form -->
+<div *ngIf="showUpdateForm" class="my-4">
+    <h2 class="font-semibold text-xl">Update Estimate</h2>
+    <form (ngSubmit)="submitUpdateForm()">
+      <label>Email:</label>
+      <input type="text" [(ngModel)]="selectedEstimate.email" name="email" required>
+      <br>
+  
+      <label>Contact:</label>
+
+         
+      <input type="text" [(ngModel)]="selectedEstimate.contact" name="contact" required>
+      <br>
+  
+      <!-- Add other input fields here with their corresponding ngModel bindings -->
+      <label class="lbl" for="length">Length:</label>
+      <input type="number" class="inp" [(ngModel)]="selectedEstimate.length" name="length" id="length" [value]="length" (input)="length = $event.target.valueAsNumber" required>
+      <br>
+  
+      <label style=" margin-right: 10px; font-size: 18px; color: #333;" for="breadth">Breadth:</label>
+       
+      <input type="number"class="inp" [(ngModel)]="selectedEstimate.breadth" name="breadth" required id="breadth" [value]="breadth" (input)="breadth = $event.target.valueAsNumber">
+      <br>
+  
+      <label style=" margin-right: 10px; font-size: 18px; color: #333;" for="height">Height:</label>
+            
+      <input type="number" [(ngModel)]="selectedEstimate.height" name="height" required class="inp" id="height" [value]="height" (input)="height = $event.target.valueAsNumber">
+      <br>
+  
+      <label style=" margin-right: 10px; font-size: 18px; color: #333;" for="multiplier">Select Multiplier:</label>
+      <select [(ngModel)]="selectedEstimate.multiplier" name="multiplier" required class="inp" id="multiplier" [value]="multiplier" (input)="multiplier = $event.target.valueAsNumber">
+        <!-- Add your options here -->
+              
+        <option value="6">6</option>
+        <option value="8">8</option>
+        <option value="10">10</option>
+      </select>
+      <br>
+      <label style=" margin-right: 10px; font-size: 18px; color: #333;" for="actual">Actual Weight:</label>
+      <input class="inp" type="number" id="actual" [value]="actual" (input)="actual = $event.target.valueAsNumber"[(ngModel)]="selectedEstimate.actualweight"  /><br>
+         
+      
+      <button (click)="calculateEstimated()">Calculate Estimate</button>
+      <p style="padding: 12px;" id="estimateResult">Rs.{{ estimateResult }}</p>
+  
+      <!-- ... (Previous code) ... -->
+  
+      <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Submit</button>
+      <button type="button" (click)="cancelUpdateForm()" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Cancel</button>
+    </form>
+  </div>

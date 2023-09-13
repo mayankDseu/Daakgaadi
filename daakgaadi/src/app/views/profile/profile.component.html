@@ -1,0 +1,205 @@
+
+<style>
+  /* Base styles for the container and form */
+.form-container {
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+/* Styles for the input */
+.form-control {
+  width: 100%;
+  max-width: 300px; /* Set a maximum width for the input field */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Styles for the button */
+.btn-primary {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Styles for the pop-up overlay */
+.data-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Styles for the table in the pop-up */
+.data-overlay table {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.data-overlay td {
+  padding: 5px 15px;
+}
+
+/* Adjustments for responsiveness */
+@media screen and (max-width: 767px) {
+  .form-control {
+    max-width: 100%; /* Make the input full width on smaller screens */
+  }
+  
+  .btn-primary {
+    width: 100%; /* Make the button full width on smaller screens */
+  }
+  
+  .data-overlay table {
+    max-width: 80%; /* Limit the width of the pop-up table on smaller screens */
+  }
+}
+
+</style>
+<app-auth-navbar></app-auth-navbar>
+
+<main class="profile-page">
+  <section class="relative block h-500-px">
+    <div
+      class="absolute top-0 w-full h-full bg-center bg-cover"
+      style="
+        background-image: url('https://img.freepik.com/premium-vector/3d-online-delivery-service-delivery-tracking-mobile-application-concept-delivery-man-driving-scooter-out-mobile-parcel-box-floating-air-tracking-courier-by-map-application_42421-1865.jpg');
+      "
+    >
+      <span
+        id="blackOverlay"
+        class="w-full h-full absolute opacity-50 bg-black"
+      ></span>
+    </div>
+    
+    <div
+      class="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-70-px"
+      style="transform: translateZ(0)"
+    >
+      <svg
+        class="absolute bottom-0 overflow-hidden"
+        xmlns="http://www.w3.org/2000/svg"
+        preserveAspectRatio="none"
+        version="1.1"
+        viewBox="0 0 2560 100"
+        x="0"
+        y="0"
+      >
+        <polygon
+          class="text-blueGray-200 fill-current"
+          points="2560 0 2560 100 0 100"
+        ></polygon>
+      </svg>
+    </div>
+  </section>
+
+  
+  <section class="relative py-16 bg-blueGray-200">
+    <div class="container mx-auto px-4">
+      <div
+        class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg -mt-64"
+      >
+        <div class="px-6">
+          <div class="flex flex-wrap justify-center">
+            <div class="w-full lg:w-3/12 px-4 lg:order-2 flex justify-center">
+              <div class="relative">
+                <img
+                  alt="..."
+                  src="assets/img/user.jpg"
+                  class="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px"
+                />
+              </div>
+            </div>
+            <div
+              class="w-full lg:w-4/12 px-4 lg:order-3 lg:text-right lg:self-center"
+            >
+            </div>
+            </div>
+          <div class="text-center mt-12">
+            <h1>Welcome, {{message}}</h1>
+            
+            <div class="flex flex-wrap mt-4">
+              <div class="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
+                <app-card-page-visits></app-card-page-visits>
+              </div>
+              </div>
+              <div class="w-full xl:w-4/12 px-4">
+                <app-card-social-traffic></app-card-social-traffic>
+              </div>
+              <div class="w-full bg-gray-100 p-4">
+                <form class="bg-white rounded-lg shadow-md p-4">
+                  <h3 class="text-xl font-semibold text-center mb-4">Track Consignment</h3>
+                  <div class="form-container">
+                    <form>
+                      <div class="form-group">
+                        <label>Reference id</label>
+                        <input type="text" [(ngModel)]="name" [ngModelOptions]="{standalone: true}" class="form-control" id="name" placeholder="Enter the given id">
+                      </div>
+                      <button type="submit" class="btn btn-primary mt-4" (click)="register()">Submit</button>
+                    </form>
+                  </div>
+                </form>
+              </div>
+                  
+              
+            <!-- Add a click event listener to the entire document to close the pop-up -->
+            <div *ngIf="estimate" class="data-overlay" (click)="closePopup()">
+              <table>
+                <tr>
+                  <th>Status</th>
+                  <th>Timestamp (Date & Time)</th>
+                </tr>
+                <tr *ngFor="let history of estimate.statusHistory">
+                  <td>{{ history.status }}</td>
+                  <td>{{ history.timestamp | date: 'yyyy-MM-dd HH:mm:ss' }}</td>
+                </tr>
+              </table>
+            </div>
+            
+           
+            
+            
+            <button (click)="register()">Fetch Estimate Data</button>
+            
+            
+
+            
+            <div class="mb-2 text-blueGray-600 mt-10">
+              <i class="fas fa-briefcase mr-2 text-lg text-blueGray-400"></i>
+            
+            </div>
+            <div class="mb-2 text-blueGray-600">
+              <i class="fas fa-university mr-2 text-lg text-blueGray-400"></i>
+              World Class Facility
+            </div>
+          </div>
+          <div class="mt-10 py-10 border-t border-blueGray-200 text-center">
+            <div class="flex flex-wrap justify-center">
+              <div class="w-full lg:w-9/12 px-4">
+                <p class="mb-4 text-lg leading-relaxed text-blueGray-700">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Asperiores reiciendis fugit laudantium sunt hic deserunt, sapiente impedit harum accusamus. Quaerat sint numquam fugiat tempora eius!</p>
+                <a href="javascript:void(0)" class="font-normal text-red-600">
+                  Show more
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<app-footer></app-footer>

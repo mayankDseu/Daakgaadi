@@ -1,0 +1,177 @@
+
+
+<div
+  class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded"
+  [ngClass]="color === 'light' ? 'bg-white' : 'bg-red-900 text-white'"
+>
+  <div class="rounded-t mb-0 px-4 py-3 border-0">
+    <div class="flex flex-wrap items-center">
+      <div class="relative w-full px-4 max-w-full flex-grow flex-1">
+        <h3
+          class="font-semibold text-lg"
+          [ngClass]="color === 'light' ? 'text-blueGray-700' : 'text-white'"
+        >
+          Card Tables
+        </h3>
+      </div>
+    </div>
+  </div>
+  <div class="block w-full overflow-x-auto">
+    <!-- Projects table -->
+    <table class="items-center w-full bg-transparent border-collapse">
+      <thead>
+        <tr>
+          <th
+            class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+            [ngClass]="
+              color === 'light'
+                ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
+                : 'bg-red-800 text-red-300 border-red-700'
+            "
+          >
+            customerName
+          </th>
+          <th
+            class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+            [ngClass]="
+              color === 'light'
+                ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
+                : 'bg-red-800 text-red-300 border-red-700'
+            "
+          >
+          customer Address 
+          </th>
+          <th
+            class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+            [ngClass]="
+              color === 'light'
+                ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
+                : 'bg-red-800 text-red-300 border-red-700'
+            "
+          >
+            
+contactNo
+
+          </th>
+          <th
+          class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+          [ngClass]="
+            color === 'light'
+              ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
+              : 'bg-red-800 text-red-300 border-red-700'
+          "
+        >
+        Status 
+        </th>
+          <th
+            class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+            [ngClass]="
+              color === 'light'
+                ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
+                : 'bg-red-800 text-red-300 border-red-700'
+            "
+          >
+            
+email
+          </th>
+          <th
+            class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+            [ngClass]="
+              color === 'light'
+                ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
+                : 'bg-red-800 text-red-300 border-red-700'
+            "
+          >
+          Product Name
+          </th>
+          <th
+            class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+            [ngClass]="
+              color === 'light'
+                ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
+                : 'bg-red-800 text-red-300 border-red-700'
+            "
+          >Price</th>
+          <th
+            class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+            [ngClass]="
+              color === 'light'
+                ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
+                : 'bg-red-800 text-red-300 border-red-700'
+            "
+          >Quantity</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let invoice of paginatedInvoices">
+          
+          <td
+            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+          >
+          {{ invoice.customerName }}
+          </td>
+          <td
+            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+          >
+             {{ invoice.address }}
+          </td>
+          <td
+            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+          >
+            {{invoice.contactNo}}
+          </td>
+          <td
+            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+          >
+          <i class="fas fa-circle text-orange-500 mr-2"></i> {{invoice.status}}
+          </td>
+          <td
+            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+          >
+            {{invoice.email}}
+          </td>
+          <td
+            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right"
+          >
+          <ul>
+            <li *ngFor="let product of invoice.products">
+              {{ product.name }}
+            </li>
+          </ul>
+          </td>
+<td>          <ul>
+            <li *ngFor="let product of invoice.products">
+              {{ product.price }}
+            </li>
+          </ul>
+        </td>
+        <td>
+          <ul>
+            <li *ngFor="let product of invoice.products">
+              {{ product.qty }}
+            </li>
+          </ul>
+        </td>
+        </tr>
+
+       
+      </tbody>
+      <div class="flex justify-center mt-4">
+        <button
+          class="bg-gray-300  px-4 py-2 rounded-l"
+          [disabled]="currentPage === 1"
+          (click)="onPageChange(currentPage - 1)"
+        >
+          Prev
+        </button>
+        <button
+          class="bg-gray-300  px-4 py-2 rounded-r"
+          [disabled]="currentPage === totalPages"
+          (click)="onPageChange(currentPage + 1)"
+        >
+          Next
+        </button>
+      </div>
+    </table>
+  </div>
+</div>

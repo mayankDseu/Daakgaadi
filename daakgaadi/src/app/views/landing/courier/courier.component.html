@@ -1,0 +1,117 @@
+<style>
+main{
+    padding: auto;
+    margin: auto;
+    margin-left:40px;
+}
+.courier-container-desktop .courier-benefits-section-desktop .benefits-container .header-section .heading {
+    position: relative;
+    font-size: 2.6rem;
+    line-height: 2.4rem;
+    font-weight: 600;
+}
+.courier-container-desktop .courier-benefits-section-desktop .benefits-container .benefits-content .benefits-list-conatiner .benefit-description .image-wrapper img {
+    width: 15rem;
+    aspect-ratio: 1/1;
+}
+img {
+    overflow-clip-margin: content-box;
+    overflow: clip;
+}
+.courier-container-desktop .courier-benefits-section-desktop .benefits-container .benefits-content .benefits-list-conatiner .benefit-description .benefit-content {
+    width: 85%;
+    max-width: 87ch;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.courier-container-desktop .courier-benefits-section-desktop .benefits-container .benefits-content .benefits-list-conatiner .benefit-description .benefit-content .title {
+    margin: 0;
+    font-weight: 600;
+    font-size: 2rem;
+    line-height: 2.8rem;
+    margin-bottom: 1rem;
+}
+h2 {
+    display: block;
+    font-size: 1.5em;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+.courier-container-desktop .courier-benefits-section-desktop .benefits-container .header-section {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}
+.courier-container-desktop {
+    padding-top: 8rem;
+    margin: auto;
+    max-width: 1500px;
+    background-color: #fff;
+    box-shadow: 5px 0 5px -5px rgba(0,0,0,.5), -5px 0 5px -5px rgba(0,0,0,.5);
+    position: relative;
+}
+
+.courier-container-desktop .courier-benefits-section-desktop .benefits-container .header-section .heading-description {
+  
+    
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+}
+</style>
+
+<app-auth-navbar></app-auth-navbar>
+<main>
+  <div class="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-75">
+    <div class="absolute top-0 w-full h-full bg-center bg-cover" style="background-image: url('https://img.freepik.com/premium-psd/3d-illustration-delivery-service-courier-checking-package-list-paper-note_69464-2254.jpg');">
+      <span id="blackOverlay" class="w-full h-full absolute opacity-75 bg-black"></span>
+    </div>
+    <div class="container relative mx-auto">
+      <div class="items-center flex flex-wrap">
+        <div class="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
+          <div class="pr-12">
+            <h1 class="text-white font-semibold text-5xl">
+              Reshaping Online Courier Services in India
+
+            </h1>
+            <p class="mt-4 text-lg text-blueGray-200">
+              This is a simple example of a Landing Page you can build using
+              Notus Angular. It features multiple CSS components based on the
+              Tailwind CSS design system.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-70-px" style="transform: translateZ(0)">
+        <svg class="absolute bottom-0 overflow-hidden" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" version="1.1" viewBox="0 0 2560 100" x="0" y="0">
+          <polygon class="text-blueGray-200 fill-current" points="2560 0 2560 100 0 100"></polygon>
+        </svg>
+      </div>
+    </div>
+
+    
+    <div class="flex flex-wrap items-center mt-32" id="bookingSection">
+        <div class="w-full md:w-5/12 px-4 mr-auto ml-auto">
+          <h3 style="font-size: 40px; text-align: left; padding: 20px;">Courier Service</h3>
+          <div class="cont">
+            <div class="curvy-box">
+              <label class="lbl" for="length">Pickup Pincode:</label>
+              <input class="inp" type="text" id="length" /><br>
+              <label style=" margin-right: 10px; font-size: 18px; color: #333;" for="breadth">Drop Pincode:</label>
+              <input class="inp" type="text" id="breadth" /><br>
+              <label style=" margin-right: 10px; font-size: 18px; color: #333;" for="height">Mobile number:</label>
+              <input class="inp" type="number" id="height"  /><br>
+              <button type="submit">Get Estimate</button>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+
+        </main>
+        <app-footer></app-footer>
