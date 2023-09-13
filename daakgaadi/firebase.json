@@ -1,0 +1,21 @@
+{
+  "hosting": {
+    "public": "dist/notus-angular",
+    "rewrites": [
+      {
+        "source": "/**",
+        "destination": "https://logistwork.onrender.com"
+      },
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ],
+
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
